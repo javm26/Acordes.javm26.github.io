@@ -1,0 +1,217 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 650px;
+}
+
+h1, h2, h3 { color: #333; }
+h1{ color: #1a1a5c; }
+
+#difficulty-buttons button,
+#chord-type-options button,
+#back-to-difficulty-btn,
+#start-quiz-btn,
+#play-again-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    margin: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#difficulty-buttons button:hover,
+#chord-type-options button:hover,
+#back-to-difficulty-btn:hover,
+#start-quiz-btn:hover,
+#play-again-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#chord-type-options button.selected {
+    background-color: #28a745;
+    box-shadow: 0 0 10px #28a745;
+}
+
+#back-to-difficulty-btn { background-color: #6c757d; }
+#back-to-difficulty-btn:hover { background-color: #545b62; }
+
+/* --- ESTILOS PARA LAS IMÁGENES --- */
+/* Contenedor de la imagen de pregunta (imageToText) */
+#question-image-container {
+    margin: 15px auto;
+    width: 200px; /* Ancho del contenedor de la imagen de pregunta */
+    height: 130px; /* Alto del contenedor de la imagen de pregunta */
+    border: 2px dashed #007bff;
+    display: flex; /* Para centrar la imagen si es más pequeña */
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden; /* Para que la imagen no se desborde */
+}
+
+#question-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Asegura que toda la imagen sea visible, manteniendo proporción */
+}
+
+/* Botones que contienen imágenes como opción (textToImage) */
+.option-img-btn {
+    display: flex; /* Cambiado a flex para alinear texto e imagen si es necesario */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 20px);
+    max-width: 180px; /* Ancho de los botones con imagen */
+    min-height: 120px; /* Altura mínima para dar espacio a la imagen */
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #5c6bc0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em; /* Reducido un poco si la imagen ocupa mucho */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.option-img-btn:hover {
+    background-color: #3949ab;
+    transform: scale(1.02);
+}
+
+.option-img-btn img {
+    max-width: 100px; /* Máximo ancho de la imagen dentro del botón */
+    max-height: 70px; /* Máxima altura de la imagen dentro del botón */
+    object-fit: contain;
+    margin-bottom: 5px; /* Espacio entre la imagen y el texto (si lo hubiera) */
+    border: 1px solid #fff; /* Opcional: borde para la imagen */
+    border-radius: 4px;
+}
+/* --- FIN ESTILOS PARA LAS IMÁGENES --- */
+
+
+/* Botones de opción solo con texto */
+.option-btn {
+    display: block;
+    width: calc(100% - 20px);
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: #5c6bc0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.option-btn:hover {
+    background-color: #3949ab;
+    transform: scale(1.02);
+}
+
+
+#timer-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#timer-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #28a745;
+    border-radius: 10px; /* Ahora redondeado siempre */
+    transition: width 0.5s linear, background-color 0.5s ease; /* Añadida transición para color */
+}
+#timer-bar.low-time { background-color: #ffc107; }
+#timer-bar.critical-time { background-color: #dc3545; }
+
+#score-display { font-size: 1.2em; margin-bottom: 15px; color: #444; font-weight: bold; }
+#question-area { margin: 20px 0; min-height: 60px; /* Reducido un poco si la imagen va en su propio contenedor */ }
+
+#feedback { margin-top: 20px; font-weight: bold; font-size: 1.1em; min-height: 25px; }
+#feedback.correct { color: #155724; }
+#feedback.incorrect { color: #721c24; }
+
+#results-screen { animation: fadeInScaleUp 0.6s ease-out forwards; transform: scale(0.9); opacity: 0; }
+@keyframes fadeInScaleUp { to { transform: scale(1); opacity: 1; } }
+#final-score.animate-score { animation: scoreAppear 0.5s ease-out 0.3s forwards; transform: scale(1.5); opacity: 0; }
+@keyframes scoreAppear { to { transform: scale(1); opacity: 1; } }
+
+#difficulty-buttons button:active,
+#chord-type-options button:active,
+#back-to-difficulty-btn:active,
+#start-quiz-btn:active,
+#play-again-btn:active,
+.option-btn:active,
+.option-img-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) inset;
+}
+
+@keyframes correctAnswerFlash {
+    0% { background-color: rgba(40, 167, 69, 0); }
+    50% { background-color: rgba(40, 167, 69, 0.3); }
+    100% { background-color: rgba(40, 167, 69, 0); }
+}
+.quiz-screen-flash-correct { animation: correctAnswerFlash 0.7s ease-out; }
+
+@keyframes incorrectAnswerShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+.quiz-screen-shake-incorrect { animation: incorrectAnswerShake 0.5s ease-in-out; }
+
+#timer-bar-container.critical-warning { animation: pulseBorder 1s infinite alternate; }
+#timer-bar.critical-time.pulsing { animation: pulseBar 0.8s infinite alternate; }
+
+@keyframes pulseBorder {
+    from { box-shadow: 0 0 8px rgba(220, 53, 69, 0.5); }
+    to { box-shadow: 0 0 15px rgba(220, 53, 69, 1); }
+}
+@keyframes pulseBar { from { opacity: 1; } to { opacity: 0.7; } }
+
+@media (max-width: 480px) {
+    .container { padding: 15px; }
+    h1 { font-size: 1.6em; } h2 { font-size: 1.3em; }
+    #difficulty-buttons button, #chord-type-options button, #back-to-difficulty-btn, #start-quiz-btn, #play-again-btn { padding: 10px 12px; font-size: 0.95em; margin: 5px; }
+    .option-btn { padding: 12px; font-size: 1em; }
+    .option-img-btn { max-width: 150px; min-height: 100px; padding: 8px;}
+    .option-img-btn img { max-width: 80px; max-height: 60px; }
+    #question-image-container { width: 150px; height: 100px; }
+}

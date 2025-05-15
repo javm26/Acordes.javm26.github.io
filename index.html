@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Acordes de Teclado Dinámico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Test de Acordes de Teclado</h1>
+
+        <div id="initial-selection-screen">
+            <h2>Elige la Dificultad</h2>
+            <div id="difficulty-buttons">
+                <button class="difficulty-btn" data-difficulty="principiante">Principiante</button>
+                <button class="difficulty-btn" data-difficulty="intermedio">Intermedio</button>
+                <button class="difficulty-btn" data-difficulty="experto">Experto</button>
+            </div>
+        </div>
+
+        <div id="options-screen" style="display:none;">
+            <h2 id="options-title"></h2>
+            <div id="chord-type-options">
+                <!-- Las opciones de acordes se insertan aquí por JS -->
+            </div>
+            <button id="back-to-difficulty-btn">Atrás</button>
+            <button id="start-quiz-btn" style="display:none;">Comenzar Test</button>
+        </div>
+
+        <div id="quiz-screen" style="display:none;">
+            <div id="timer-bar-container">
+                <div id="timer-bar"></div>
+            </div>
+            <div id="score-display">Puntuación: <span>0</span></div>
+            <div id="question-area">
+                <h3 id="question-text"></h3>
+                <div id="question-image-container" style="display:none;">
+                    <!-- Aquí se mostrará la imagen del acorde para preguntas "imageToText" -->
+                    <!-- El contenido se genera por JS -->
+                </div>
+            </div>
+            <div id="options-area">
+                <!-- Las opciones (texto o botones con imágenes) se generan dinámicamente -->
+            </div>
+            <p id="feedback"></p>
+        </div>
+
+        <div id="results-screen" style="display:none;">
+            <h2>Resultados del Test</h2>
+            <p id="final-score"></p>
+            <p id="final-message"></p>
+            <button id="play-again-btn">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
